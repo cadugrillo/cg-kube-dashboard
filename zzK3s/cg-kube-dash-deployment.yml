@@ -1,3 +1,22 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cg-kube
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cg-kube
+subjects:
+- kind: ServiceAccount
+  name: cg-kube
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+---  
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,9 +33,14 @@ spec:
       labels:
         app: cg-kube-dashboard
     spec:
+      serviceAccountName: cg-kube
       containers:
-        - name: cg-kube-dashboard
-          image: cadugrillo/cg-kube-dashboard:1.0
+        - name: cg-kube-api
+          image: cadugrillo/cg-kube-api:1.0
+          ports:
+          - containerPort: 4343
+        - name: cg-kube-webapp
+          image: nginx:alpine
           ports:
           - containerPort: 80
 ---
@@ -30,3 +54,21 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cg-kube-dasboard
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:  
+  - http:
+      paths:
+      - path: /cg-kube-dasboard
+        pathType: Prefix
+        backend:
+          service:
+            name: cg-kube-dasboard
+            port:
+              number: 80
