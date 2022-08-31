@@ -40,7 +40,7 @@ spec:
           ports:
           - containerPort: 4343
         - name: cg-kube-webapp
-          image: nginx:alpine
+          image: cadugrillo/cg-kube-webapp:1.0
           ports:
           - containerPort: 80
 ---
@@ -58,17 +58,17 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cg-kube-dasboard
+  name: cg-kube-dashboard
   annotations:
     kubernetes.io/ingress.class: "traefik"
 spec:
   rules:  
   - http:
       paths:
-      - path: /cg-kube-dasboard
+      - path: /cg-kube-dashboard
         pathType: Prefix
         backend:
           service:
-            name: cg-kube-dasboard
+            name: cg-kube-dashboard-service
             port:
               number: 80
