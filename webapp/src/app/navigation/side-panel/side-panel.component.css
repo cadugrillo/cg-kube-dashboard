@@ -1,0 +1,13 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .menu {
+    width: 15%;
+  }
+
+  .router {
+    width: 85%;
+  }

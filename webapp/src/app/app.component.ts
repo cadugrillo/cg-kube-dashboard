@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'webapp';
+  title = 'CG-KUBE-DASHBOARD';
+
+  openWebPage() {
+    window.open('https://github.com/cadugrillo/cg-kube-dashboard', '_blank');
+  }
+
 }
