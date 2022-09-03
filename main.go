@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	gin.SetMode(gin.DebugMode)
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 
