@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/cg-kube-dashboard/",
             "outputPath": "dist/webapp",
             "index": "src/index.html",
             "main": "src/main.ts",
