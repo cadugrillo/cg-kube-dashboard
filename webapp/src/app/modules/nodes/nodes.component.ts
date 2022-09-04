@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NodesService } from 'src/app/services/nodes.service';
+import { NodesService, KbNodes } from 'src/app/services/nodes.service';
 
 @Component({
   selector: 'app-nodes',
@@ -7,6 +7,8 @@ import { NodesService } from 'src/app/services/nodes.service';
   styleUrls: ['./nodes.component.css']
 })
 export class NodesComponent implements OnInit {
+
+  nodes!: KbNodes;
 
   constructor(private NodesService: NodesService) { }
 
@@ -17,6 +19,9 @@ export class NodesComponent implements OnInit {
   getNodes() {
     this.NodesService.getNodes().subscribe((data) => {
       console.log(data);
+      this.nodes = (data as KbNodes);
+      console.log(this.nodes.items[0].metadata.name);
+      console.log(this.nodes.items[0].metadata.annotations);
     });
   }
 

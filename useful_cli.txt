@@ -34,3 +34,5 @@ func ParsePortSpecs(ports []string) (map[Port]struct{}, map[Port][]PortBinding, 
 
 If you have RBAC enabled on your cluster, use the following snippet to create role binding which will grant the default service account view permissions.
 kubectl create clusterrolebinding default-view --clusterrole=view --serviceaccount=default:default
+
+*** When compiling from M1 Mac use --platform=linux/amd64 at docker build command ***

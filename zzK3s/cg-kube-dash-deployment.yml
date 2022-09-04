@@ -41,7 +41,7 @@ spec:
           ports:
           - containerPort: 4343
         - name: cg-kube-webapp
-          image: cadugrillo/cg-kube-webapp:1.0
+          image: cadugrillo/cg-kube-webapp:1.1
           imagePullPolicy: Always
           ports:
           - containerPort: 80
