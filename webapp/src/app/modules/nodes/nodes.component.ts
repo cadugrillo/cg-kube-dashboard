@@ -9,6 +9,8 @@ import { NodesService, KbNodes } from 'src/app/services/nodes.service';
 export class NodesComponent implements OnInit {
 
   nodes!: KbNodes;
+  displayedColumns: string[] = ['name', 'status', 'roles', 'age', 'version', 'internal-ip', 'os-image', 'kernel-version'];
+  dataSource = ELEMENT_DATA.items;
 
   constructor(private NodesService: NodesService) { }
 
@@ -26,3 +28,61 @@ export class NodesComponent implements OnInit {
   }
 
 }
+
+const ELEMENT_DATA: KbNodes = {
+  items:
+  [
+    {metadata: {
+                annotations: new Map([['hostname', 'Master']]),
+                creationTimestamp: '',
+                finalizers: [],
+                labels: new Map([['beta.kubernetes.io/arch', 'Amd64']]),
+                managedFields: [],
+                name: 'ip-172-31-23-48',
+                resourceVersion: '',
+                uid: ''
+              },
+    spec: {
+           podCIDR: ',',
+           podCIDRs: [],
+           providerID: ''
+          },
+    status
+    },
+    {metadata: {
+                annotations: new Map([["hostname", "Worker1"]]),
+                creationTimestamp: '',
+                finalizers: [],
+                labels: new Map([['beta.kubernetes.io/arch', 'Amd64']]),
+                managedFields: [],
+                name: 'ip-172-31-23-49',
+                resourceVersion: '',
+                uid: ''
+              },
+    spec: {
+            podCIDR: ',',
+            podCIDRs: [],
+            providerID: ''
+          },
+    status
+    },
+    {metadata: {
+                annotations: new Map([['hostname', 'Worker2']]),
+                creationTimestamp: '',
+                finalizers: [],
+                labels: new Map([['beta.kubernetes.io/arch', 'Amd64']]),
+                managedFields: [],
+                name: 'ip-172-31-23-50',
+                resourceVersion: '',
+                uid: ''
+               },
+    spec: {
+           podCIDR: ',',
+           podCIDRs: [],
+           providerID: ''
+          },
+    status
+    }
+  ],
+  metadata: {resourceVersion: 'testing version'}
+};

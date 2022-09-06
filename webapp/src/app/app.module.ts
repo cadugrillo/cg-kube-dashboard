@@ -20,6 +20,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTableModule} from '@angular/material/table';
 import { SidePanelContentComponent } from './navigation/side-panel-content/side-panel-content.component';
 import { SidePanelComponent } from './navigation/side-panel/side-panel.component';
 import { OverviewComponent } from './modules/overview/overview.component';
@@ -59,7 +60,8 @@ import { PodsService } from './services/pods.service';
     MatMenuModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ],
   providers: [NodesService, PodsService],
   bootstrap: [AppComponent]
