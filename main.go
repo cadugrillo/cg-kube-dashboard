@@ -28,6 +28,7 @@ func main() {
 	//r.POST("/config/:appName", handlers.SetConfigHandler)
 	r.GET("/cg-kube-dashboard/nodes/json", handlers.GetNodesHandler)
 	r.GET("/cg-kube-dashboard/pods/json", handlers.GetPodsHandler)
+	r.GET("/cg-kube-dashboard/deployments/json", handlers.GetDeploymentsHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {

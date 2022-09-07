@@ -28,6 +28,8 @@ import { NodesComponent } from './modules/nodes/nodes.component';
 import { PodsComponent } from './modules/pods/pods.component';
 import { NodesService } from './services/nodes.service';
 import { PodsService } from './services/pods.service';
+import { DeploymentsService } from './services/deployments.service';
+import { DeploymentsComponent } from './modules/deployments/deployments.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { PodsService } from './services/pods.service';
     SidePanelComponent,
     OverviewComponent,
     NodesComponent,
-    PodsComponent
+    PodsComponent,
+    DeploymentsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import { PodsService } from './services/pods.service';
     MatProgressBarModule,
     MatTableModule
   ],
-  providers: [NodesService, PodsService],
+  providers: [NodesService, PodsService, DeploymentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
