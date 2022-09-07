@@ -1,3 +1,12 @@
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 64px; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
 table {
-    width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 95%;
   }

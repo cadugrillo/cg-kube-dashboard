@@ -60,5 +60,5 @@ class KbNodeSpec {
 }
 
 class KbNodeStatus {
-
+  
 }
