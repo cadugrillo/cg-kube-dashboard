@@ -60,5 +60,55 @@ class KbNodeSpec {
 }
 
 class KbNodeStatus {
-  
+  addresses!: Address[]
+  allocatable!: Capacity
+  capacity!: Capacity
+  conditions!: Condition[]
+  daemonEndpoints!: DaemonEndpoints
+  images!: Image[]
+  nodeInfo!: NodeInfo
+}
+
+class Address {
+  address!: string
+  type!: string
+}
+
+class Capacity {
+  cpu!: string
+  'ephemeral-storage'!: string
+  'hugepages-2Mi'!: string
+  memory!: string
+  pods!:string
+}
+
+class Condition {
+  lastHeartbeatTime!: string
+  lastTransitionTime!: string
+  message!: string
+  reason!: string
+  status!: string
+  type!: string
+}
+
+class DaemonEndpoints {
+
+}
+
+class Image {
+  names!: string[]
+  sizeBytes!: number
+}
+
+class NodeInfo {
+  architecture!: string
+  bootID!: string
+  containerRuntimeVersion!: string
+  kernelVersion!: string
+  kubeProxyVersion!: string
+  kubeletVersion!: string
+  machineID!: string
+  operatingSystem!: string
+  osImage!: string
+  systemUUID!: string
 }

@@ -1,54 +1,54 @@
 <mat-toolbar class="app-toolbar">
   <span>Nodes</span>
 </mat-toolbar>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="nodes.items" class="mat-elevation-z8" *ngIf="nodes">
   
-    <!-- Name Column -->
+    <!-- Name Column OK -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let element"> {{element.metadata.name}} </td>
     </ng-container>
   
-    <!-- Status Column -->
+    <!-- Status Column OK -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let element"> {{element.status.conditions[3].type}} </td>
     </ng-container>
   
-    <!-- Roles Column -->
+    <!-- Roles Column OK -->
     <ng-container matColumnDef="roles">
       <th mat-header-cell *matHeaderCellDef> Roles </th>
       <td mat-cell *matCellDef="let element"> {{element.metadata.labels.has('node-role.kubernetes.io/master') ? 'master, control-plane' : element.metadata.labels.get('node-role.kubernetes.io/worker')}} </td>
     </ng-container>
   
-    <!-- Age Column -->
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Age </th>
-      <td mat-cell *matCellDef="let element"> {{element.metadata.labels.has('beta.kubernetes.io/arch')}} </td>
+    <!-- Number CPUs Column OK -->
+    <ng-container matColumnDef="ncpu">
+      <th mat-header-cell *matHeaderCellDef> #CPUs </th>
+      <td mat-cell *matCellDef="let element"> {{element.status.allocatable.cpu}} </td>
     </ng-container>
 
-    <!-- Version Column -->
+    <!-- Version Column OK -->
     <ng-container matColumnDef="version">
         <th mat-header-cell *matHeaderCellDef> Version </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.kubeletVersion}} </td>
       </ng-container>
 
-    <!-- Internal-Ip Column -->
+    <!-- Internal-Ip Column OK -->
     <ng-container matColumnDef="internal-ip">
         <th mat-header-cell *matHeaderCellDef> Internal-Ip </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.status.addresses[0].address}} </td>
       </ng-container>
 
-     <!-- OS-image Column -->
+     <!-- OS-image Column OK -->
      <ng-container matColumnDef="os-image">
         <th mat-header-cell *matHeaderCellDef> OS-Image </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.osImage}} </td>
       </ng-container> 
       
-    <!-- Kernel-version Column -->
+    <!-- Kernel-version Column OK -->
     <ng-container matColumnDef="kernel-version">
         <th mat-header-cell *matHeaderCellDef> Kernel-Version </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.kernelVersion}} </td>
       </ng-container> 
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
