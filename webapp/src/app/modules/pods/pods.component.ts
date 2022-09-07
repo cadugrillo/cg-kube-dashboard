@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PodsService } from 'src/app/services/pods.service';
+import { PodsService, KbPods } from 'src/app/services/pods.service';
 
 @Component({
   selector: 'app-pods',
@@ -7,6 +7,9 @@ import { PodsService } from 'src/app/services/pods.service';
   styleUrls: ['./pods.component.css']
 })
 export class PodsComponent implements OnInit {
+
+  pods!: KbPods;
+  displayedColumns: string[] = ['name', 'status', 'restarts', 'ip', 'node', 'startTime', 'namespace']
 
   constructor(private PodsService: PodsService) { }
 
@@ -17,6 +20,7 @@ export class PodsComponent implements OnInit {
   getPods() {
     this.PodsService.getPods().subscribe((data) => {
       console.log(data);
+      this.pods = (data as KbPods)
     });
   }
 
