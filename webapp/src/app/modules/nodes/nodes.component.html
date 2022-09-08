@@ -5,19 +5,19 @@
   
     <!-- Name Column OK -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef> NAME </th>
       <td mat-cell *matCellDef="let element"> {{element.metadata.name}} </td>
     </ng-container>
   
     <!-- Status Column OK -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <th mat-header-cell *matHeaderCellDef> STATUS </th>
       <td mat-cell *matCellDef="let element"> {{element.status.conditions[3].type}} </td>
     </ng-container>
   
     <!-- Roles Column OK -->
     <ng-container matColumnDef="roles">
-      <th mat-header-cell *matHeaderCellDef> Roles </th>
+      <th mat-header-cell *matHeaderCellDef> ROLES </th>
       <td mat-cell *matCellDef="let element"> {{element.metadata.labels['node-role.kubernetes.io/master'] ? 'master, control-plane' : element.metadata.labels['node-role.kubernetes.io/worker']}} </td>
     </ng-container>
   
@@ -29,25 +29,25 @@
 
     <!-- Version Column OK -->
     <ng-container matColumnDef="version">
-        <th mat-header-cell *matHeaderCellDef> Version </th>
+        <th mat-header-cell *matHeaderCellDef> VERSION </th>
         <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.kubeletVersion}} </td>
       </ng-container>
 
     <!-- Internal-Ip Column OK -->
     <ng-container matColumnDef="internal-ip">
-        <th mat-header-cell *matHeaderCellDef> Internal-Ip </th>
+        <th mat-header-cell *matHeaderCellDef> INTERNAL-IP </th>
         <td mat-cell *matCellDef="let element"> {{element.status.addresses[0].address}} </td>
       </ng-container>
 
      <!-- OS-image Column OK -->
      <ng-container matColumnDef="os-image">
-        <th mat-header-cell *matHeaderCellDef> OS-Image </th>
+        <th mat-header-cell *matHeaderCellDef> OS-IMAGE </th>
         <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.osImage}} </td>
       </ng-container> 
       
     <!-- Kernel-version Column OK -->
     <ng-container matColumnDef="kernel-version">
-        <th mat-header-cell *matHeaderCellDef> Kernel-Version </th>
+        <th mat-header-cell *matHeaderCellDef> KERNEL-VERSION </th>
         <td mat-cell *matCellDef="let element"> {{element.status.nodeInfo.kernelVersion}} </td>
       </ng-container> 
   

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServicesService } from 'src/app/services/services.service';
+import { ServicesService, KbServices } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-services',
@@ -8,8 +8,8 @@ import { ServicesService } from 'src/app/services/services.service';
 })
 export class ServicesComponent implements OnInit {
 
-  //services!: KbServices;
-  //displayedColumns: string[] = ['name', 'status', 'restarts', 'ip', 'node', 'startTime', 'namespace']
+  services!: KbServices;
+  displayedColumns: string[] = ['name', 'type', 'clusterIp', 'externalIp', 'ports', 'startTime', 'selector']
 
   constructor(private ServicesService: ServicesService) { }
 
@@ -20,7 +20,7 @@ export class ServicesComponent implements OnInit {
   getServices() {
     this.ServicesService.getServices().subscribe((data) => {
       console.log(data);
-      //this.services = (data as KbServices);
+      this.services = (data as KbServices);
     });
   }
 

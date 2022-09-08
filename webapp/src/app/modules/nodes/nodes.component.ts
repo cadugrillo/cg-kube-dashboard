@@ -19,7 +19,7 @@ export class NodesComponent implements OnInit {
 
   getNodes() {
     this.NodesService.getNodes().subscribe((data) => {
-      //console.log(data);
+      console.log(data);
       this.nodes = (data as KbNodes);
     });
   }
