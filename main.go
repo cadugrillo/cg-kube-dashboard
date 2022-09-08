@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	gin.SetMode(gin.DebugMode)
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 
@@ -26,9 +26,11 @@ func main() {
 
 	//r.GET("/config/:appName", handlers.GetConfigHandler)
 	//r.POST("/config/:appName", handlers.SetConfigHandler)
+	r.GET("/cg-kube-dashboard/deployments/json", handlers.GetDeploymentsHandler)
+	r.GET("/cg-kube-dashboard/ingresses/json", handlers.GetIngressHandler)
 	r.GET("/cg-kube-dashboard/nodes/json", handlers.GetNodesHandler)
 	r.GET("/cg-kube-dashboard/pods/json", handlers.GetPodsHandler)
-	r.GET("/cg-kube-dashboard/deployments/json", handlers.GetDeploymentsHandler)
+	r.GET("/cg-kube-dashboard/services/json", handlers.GetServicesHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {

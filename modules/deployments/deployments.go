@@ -27,3 +27,22 @@ func GetDeployments() *v1.DeploymentList {
 	}
 	return deployments
 }
+
+func GetDeployment(deploymentName string) *v1.Deployment {
+
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		panic(err.Error())
+	}
+
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		panic(err.Error())
+	}
+	opts := metav1.GetOptions{}
+	deployment, err := clientset.AppsV1().Deployments("default").Get(context.TODO(), deploymentName, opts)
+	if err != nil {
+		panic(err.Error())
+	}
+	return deployment
+}

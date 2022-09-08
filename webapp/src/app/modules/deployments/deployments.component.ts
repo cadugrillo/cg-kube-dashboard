@@ -20,7 +20,7 @@ export class DeploymentsComponent implements OnInit {
   getPods() {
     this.DeploymentsService.getDeployments().subscribe((data) => {
       console.log(data);
-      //this.pods = (data as KbDeployments)
+      //this.pods = (data as KbDeployments);
     });
   }
 

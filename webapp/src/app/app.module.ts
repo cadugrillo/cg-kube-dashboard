@@ -30,6 +30,10 @@ import { NodesService } from './services/nodes.service';
 import { PodsService } from './services/pods.service';
 import { DeploymentsService } from './services/deployments.service';
 import { DeploymentsComponent } from './modules/deployments/deployments.component';
+import { ServicesService } from './services/services.service';
+import { IngressesService } from './services/ingresses.service';
+import { ServicesComponent } from './modules/services/services.component';
+import { IngressesComponent } from './modules/ingresses/ingresses.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { DeploymentsComponent } from './modules/deployments/deployments.componen
     OverviewComponent,
     NodesComponent,
     PodsComponent,
-    DeploymentsComponent
+    DeploymentsComponent,
+    ServicesComponent,
+    IngressesComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,8 @@ import { DeploymentsComponent } from './modules/deployments/deployments.componen
     MatProgressBarModule,
     MatTableModule
   ],
-  providers: [NodesService, PodsService, DeploymentsService],
+  providers: [NodesService, PodsService, DeploymentsService, ServicesService,
+  IngressesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
