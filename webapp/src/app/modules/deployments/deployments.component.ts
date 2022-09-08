@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeploymentsService } from 'src/app/services/deployments.service';
+import { DeploymentsService, KbDeployments } from 'src/app/services/deployments.service';
 
 @Component({
   selector: 'app-deployments',
@@ -8,8 +8,8 @@ import { DeploymentsService } from 'src/app/services/deployments.service';
 })
 export class DeploymentsComponent implements OnInit {
 
-  //pods!: KbDeployments;
-  //displayedColumns: string[] = ['name', 'status', 'restarts', 'ip', 'node', 'startTime', 'namespace']
+  deployments!: KbDeployments;
+  displayedColumns: string[] = ['name', 'ready', 'upToDate', 'available', 'startTime', 'containers', 'images', 'selector']
 
   constructor(private DeploymentsService: DeploymentsService) { }
 
@@ -20,7 +20,7 @@ export class DeploymentsComponent implements OnInit {
   getPods() {
     this.DeploymentsService.getDeployments().subscribe((data) => {
       console.log(data);
-      //this.pods = (data as KbDeployments);
+      this.deployments = (data as KbDeployments);
     });
   }
 

@@ -20,7 +20,7 @@ export class PodsComponent implements OnInit {
   getPods() {
     this.PodsService.getPods().subscribe((data) => {
       //console.log(data);
-      this.pods = (data as KbPods)
+      this.pods = (data as KbPods);
     });
   }
 
