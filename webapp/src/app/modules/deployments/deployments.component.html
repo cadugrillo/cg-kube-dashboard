@@ -28,7 +28,7 @@
     </ng-container>
 
     <!-- StartTime Column OK -->
-    <ng-container matColumnDef="StartTime">
+    <ng-container matColumnDef="startTime">
         <th mat-header-cell *matHeaderCellDef> CREATED AT </th>
         <td mat-cell *matCellDef="let element"> {{element.metadata.creationTimestamp}} </td>
       </ng-container>
@@ -50,8 +50,8 @@
       </ng-container> 
 
       <!-- Selectors Column -->
-     <ng-container matColumnDef="selectors">
-      <th mat-header-cell *matHeaderCellDef> SELECTORS </th>
+     <ng-container matColumnDef="selector">
+      <th mat-header-cell *matHeaderCellDef> SELECTOR </th>
       <td mat-cell *matCellDef="let element"> app={{element.spec.selector.matchLabels['app']}} </td>
     </ng-container>
       
