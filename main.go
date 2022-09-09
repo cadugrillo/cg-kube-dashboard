@@ -24,9 +24,9 @@ func main() {
 		}
 	})
 
-	//r.GET("/config/:appName", handlers.GetConfigHandler)
-	//r.POST("/config/:appName", handlers.SetConfigHandler)
 	r.GET("/cg-kube-dashboard/deployments/json", handlers.GetDeploymentsHandler)
+	r.GET("/cg-kube-dashboard/deployments/:deploymentName", handlers.GetDeploymentHandler)
+	r.POST("/cg-kube-dashboard/deployments/update", handlers.UpdateDeploymentHandler)
 	r.GET("/cg-kube-dashboard/ingresses/json", handlers.GetIngressHandler)
 	r.GET("/cg-kube-dashboard/nodes/json", handlers.GetNodesHandler)
 	r.GET("/cg-kube-dashboard/pods/json", handlers.GetPodsHandler)

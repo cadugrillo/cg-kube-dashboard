@@ -46,3 +46,22 @@ func GetDeployment(deploymentName string) *v1.Deployment {
 	}
 	return deployment
 }
+
+func UpdateDeployment(deployment v1.Deployment) string {
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		panic(err.Error())
+	}
+
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	opts := metav1.UpdateOptions{}
+	_, err = clientset.AppsV1().Deployments("default").Update(context.TODO(), &deployment, opts)
+	if err != nil {
+		return err.Error()
+	}
+	return "Deployment successfully updated"
+}

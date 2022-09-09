@@ -12,6 +12,14 @@ export class DeploymentsService {
   getDeployments() {
     return this.httpClient.get(environment.gateway + '/cg-kube-dashboard/deployments/json');
   }
+
+  getDeployment(DeploymentName: string) {
+    return this.httpClient.get(environment.gateway + '/cg-kube-dashboard/deployments/' + DeploymentName);
+  }
+
+  updateDeployment(Deployment: KbDeployment) {
+    return this.httpClient.post(environment.gateway + '/cg-kube-dashboard/deployments/update', Deployment);
+  }
 }
 
 export class KbDeployments {
@@ -23,7 +31,7 @@ class ResourceVersion {
   resourceVersion!: string
 }
 
-class KbDeployment {
+export class KbDeployment {
   metadata!: KbDeploymentMetadata
   spec!: KbDeploymentSpec
   status!: KbDeploymentStatus
