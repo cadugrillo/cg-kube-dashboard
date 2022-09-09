@@ -23,7 +23,7 @@ class ResourceVersion {
   resourceVersion!: string
 }
 
-class KbService {
+export class KbService {
   metadata!: KbServiceMetadata
   spec!: KbServiceSpec
   status!: KbServiceStatus

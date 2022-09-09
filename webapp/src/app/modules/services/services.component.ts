@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ServicesService, KbServices } from 'src/app/services/services.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ServicesService, KbServices,KbService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-services',
@@ -9,7 +11,11 @@ import { ServicesService, KbServices } from 'src/app/services/services.service';
 export class ServicesComponent implements OnInit {
 
   services!: KbServices;
+  service!: KbService;
   displayedColumns: string[] = ['name', 'type', 'clusterIp', 'externalIp', 'ports', 'startTime', 'selector']
+  dataSource!: MatTableDataSource<KbService>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private ServicesService: ServicesService) { }
 
@@ -17,10 +23,13 @@ export class ServicesComponent implements OnInit {
     this.getServices();
   }
 
+
   getServices() {
     this.ServicesService.getServices().subscribe((data) => {
       console.log(data);
       this.services = (data as KbServices);
+      this.dataSource = new MatTableDataSource(this.services.items);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

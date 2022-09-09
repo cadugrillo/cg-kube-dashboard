@@ -23,7 +23,7 @@ class ResourceVersion {
   resourceVersion!: string
 }
 
-class KbPod {
+export class KbPod {
   metadata!: KbPodMetadata
   spec!: KbPodSpec
   status!: KbPodStatus

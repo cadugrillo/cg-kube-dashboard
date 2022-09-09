@@ -23,7 +23,7 @@ class ResourceVersion {
   resourceVersion!: string
 }
 
-class KbNode {
+export class KbNode {
   metadata!: KbNodeMetadata
   spec!: KbNodeSpec
   status!: KbNodeStatus
