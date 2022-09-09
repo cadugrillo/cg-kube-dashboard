@@ -1,64 +1,66 @@
 <mat-toolbar class="app-toolbar">
     <span>Deployments</span>
-  </mat-toolbar>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="deployments">
-  
-    <!-- Name Column OK -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> NAME </th>
-      <td mat-cell style="cursor:pointer" *matCellDef="let element" (click)="getDeployment(element.metadata.name)"> {{element.metadata.name}} </td>
-    </ng-container>
-  
-    <!-- Ready Column OK -->
-    <ng-container matColumnDef="ready">
-      <th mat-header-cell *matHeaderCellDef> READY </th>
-      <td mat-cell *matCellDef="let element"> {{element.status.readyReplicas}}/{{element.status.replicas}} </td>
-    </ng-container>
-  
-    <!-- UpToDate Column OK -->
-    <ng-container matColumnDef="upToDate">
-      <th mat-header-cell *matHeaderCellDef> UP-TO-DATE </th>
-      <td mat-cell *matCellDef="let element"> {{element.status.updatedReplicas}} </td>
-    </ng-container>
-  
-    <!-- Available Column OK -->
-    <ng-container matColumnDef="available">
-      <th mat-header-cell *matHeaderCellDef> AVAILABLE </th>
-      <td mat-cell *matCellDef="let element"> {{element.status.availableReplicas}} </td>
-    </ng-container>
-
-    <!-- StartTime Column OK -->
-    <ng-container matColumnDef="startTime">
-        <th mat-header-cell *matHeaderCellDef> CREATED AT </th>
-        <td mat-cell *matCellDef="let element"> {{element.metadata.creationTimestamp}} </td>
-      </ng-container>
-
-    <!-- Containers Column OK -->
-    <ng-container matColumnDef="containers">
-        <th mat-header-cell *matHeaderCellDef> CONTAINERS </th>
-        <td mat-cell *matCellDef="let element">
-          <span *ngFor="let container of element.spec.template.spec.containers">{{container.name}},</span>
-        </td>
-      </ng-container>
-
-     <!-- Images Column OK -->
-     <ng-container matColumnDef="images">
-        <th mat-header-cell *matHeaderCellDef> IMAGES </th>
-        <td mat-cell *matCellDef="let element">
-          <span *ngFor="let container of element.spec.template.spec.containers">{{container.image}},</span>
-        </td>
-      </ng-container> 
-
-      <!-- Selectors Column -->
-     <ng-container matColumnDef="selector">
-      <th mat-header-cell *matHeaderCellDef> SELECTOR </th>
-      <td mat-cell *matCellDef="let element"> app={{element.spec.selector.matchLabels['app']}} </td>
-    </ng-container>
-      
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
-                 aria-label="Select page of deployments">
-  </mat-paginator>
+</mat-toolbar>
+<div class="mat-elevation-z8">
+   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="deployments">
+   
+     <!-- Name Column OK -->
+     <ng-container matColumnDef="name">
+       <th mat-header-cell *matHeaderCellDef> NAME </th>
+       <td mat-cell style="cursor:pointer" *matCellDef="let element" (click)="getDeployment(element.metadata.name)"> {{element.metadata.name}} </td>
+     </ng-container>
+   
+     <!-- Ready Column OK -->
+     <ng-container matColumnDef="ready">
+       <th mat-header-cell *matHeaderCellDef> READY </th>
+       <td mat-cell *matCellDef="let element"> {{element.status.readyReplicas}}/{{element.status.replicas}} </td>
+     </ng-container>
+   
+     <!-- UpToDate Column OK -->
+     <ng-container matColumnDef="upToDate">
+       <th mat-header-cell *matHeaderCellDef> UP-TO-DATE </th>
+       <td mat-cell *matCellDef="let element"> {{element.status.updatedReplicas}} </td>
+     </ng-container>
+   
+     <!-- Available Column OK -->
+     <ng-container matColumnDef="available">
+       <th mat-header-cell *matHeaderCellDef> AVAILABLE </th>
+       <td mat-cell *matCellDef="let element"> {{element.status.availableReplicas}} </td>
+     </ng-container>
+ 
+     <!-- StartTime Column OK -->
+     <ng-container matColumnDef="startTime">
+         <th mat-header-cell *matHeaderCellDef> CREATED AT </th>
+         <td mat-cell *matCellDef="let element"> {{element.metadata.creationTimestamp}} </td>
+       </ng-container>
+ 
+     <!-- Containers Column OK -->
+     <ng-container matColumnDef="containers">
+         <th mat-header-cell *matHeaderCellDef> CONTAINERS </th>
+         <td mat-cell *matCellDef="let element">
+           <span *ngFor="let container of element.spec.template.spec.containers">{{container.name}},</span>
+         </td>
+       </ng-container>
+ 
+      <!-- Images Column OK -->
+      <ng-container matColumnDef="images">
+         <th mat-header-cell *matHeaderCellDef> IMAGES </th>
+         <td mat-cell *matCellDef="let element">
+           <span *ngFor="let container of element.spec.template.spec.containers">{{container.image}},</span>
+         </td>
+       </ng-container> 
+ 
+       <!-- Selectors Column -->
+      <ng-container matColumnDef="selector">
+       <th mat-header-cell *matHeaderCellDef> SELECTOR </th>
+       <td mat-cell *matCellDef="let element"> app={{element.spec.selector.matchLabels['app']}} </td>
+     </ng-container>
+       
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons 
+                  aria-label="Select page of deployments">
+   </mat-paginator>
+</div>
