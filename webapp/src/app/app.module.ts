@@ -34,6 +34,7 @@ import { ServicesService } from './services/services.service';
 import { IngressesService } from './services/ingresses.service';
 import { ServicesComponent } from './modules/services/services.component';
 import { IngressesComponent } from './modules/ingresses/ingresses.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,9 @@ import { IngressesComponent } from './modules/ingresses/ingresses.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
+    
   ],
   providers: [NodesService, PodsService, DeploymentsService, ServicesService,
   IngressesService],

@@ -1,7 +1,7 @@
 <mat-toolbar class="app-toolbar">
     <span>Deployments</span>
   </mat-toolbar>
-  <table mat-table [dataSource]="deployments.items" class="mat-elevation-z8" *ngIf="deployments">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="deployments">
   
     <!-- Name Column OK -->
     <ng-container matColumnDef="name">
@@ -58,3 +58,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of deployments">
+  </mat-paginator>
