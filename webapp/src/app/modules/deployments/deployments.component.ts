@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DeploymentsService, KbDeployments,KbDeployment } from 'src/app/services/deployments.service';
@@ -8,20 +8,17 @@ import { DeploymentsService, KbDeployments,KbDeployment } from 'src/app/services
   templateUrl: './deployments.component.html',
   styleUrls: ['./deployments.component.css']
 })
-export class DeploymentsComponent implements OnInit, AfterViewInit {
+export class DeploymentsComponent implements OnInit {
 
   deployments!: KbDeployments;
   deployment!: KbDeployment;
   displayedColumns: string[] = ['name', 'ready', 'upToDate', 'available', 'startTime', 'containers', 'images', 'selector'];
-  dataSource = new MatTableDataSource(this.deployments.items);
+  dataSource!: MatTableDataSource<KbDeployment>
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private DeploymentsService: DeploymentsService) { }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
 
   ngOnInit(): void {
     this.getDeployments();
@@ -31,6 +28,8 @@ export class DeploymentsComponent implements OnInit, AfterViewInit {
     this.DeploymentsService.getDeployments().subscribe((data) => {
       console.log(data);
       this.deployments = (data as KbDeployments);
+      this.dataSource = new MatTableDataSource(this.deployments.items);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
