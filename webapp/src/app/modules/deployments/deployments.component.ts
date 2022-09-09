@@ -37,7 +37,6 @@ export class DeploymentsComponent implements OnInit {
     this.DeploymentsService.getDeployment(DeploymentName).subscribe((data) => {
       console.log(data);
       this.deployment = (data as KbDeployment);
-      console.log(this.deployment);
     });
   }
 
