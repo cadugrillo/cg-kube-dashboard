@@ -68,56 +68,56 @@
 </div>
 <mat-tab-group class="tab-group">
   <mat-tab label="Description">
-    <mat-card class="example-card" *ngIf="deployment">
+    <mat-card class="example-card" >
       <mat-card-title-group>
-        <mat-card-title></mat-card-title>
+        <mat-card-title>{{deployment.metadata.name}}</mat-card-title>
         <mat-card-subtitle></mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
         <div class="same-line">
-          <span>Name: &nbsp; </span>
+          <span>Name:                   </span>
           <span>{{deployment.metadata.name}}</span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>Namespace: &nbsp; </span>
+          <span>Namespace:              </span>
           <span>{{deployment.metadata.namespace}}</span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>CreationTimestamp: &nbsp; </span>
+          <span>CreationTimestamp:      </span>
           <span>{{deployment.metadata.creationTimestamp}}</span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>Labels: &nbsp; </span>
+          <span>Labels:                 </span>
           <span *ngFor="let recipient of deployment.metadata.labels| keyvalue">
             {{ recipient.key }} = {{ recipient.value }},&nbsp;
           </span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>Annotations: &nbsp; </span>
+          <span>Annotations:            </span>
           <span *ngFor="let recipient of deployment.metadata.annotations| keyvalue">
            {{recipient.key != 'kubectl.kubernetes.io/last-applied-configuration' ? (recipient.key+"="+recipient.value) : ""}},&nbsp;
           </span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>Selector: &nbsp; </span>
+          <span>Selector:               </span>
           <span *ngFor="let recipient of deployment.spec.selector.matchLabels| keyvalue">
             {{ recipient.key }} = {{ recipient.value }},&nbsp;
           </span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>Replicas: &nbsp; </span>
+          <span>Replicas:               </span>
           <span>{{deployment.spec.replicas}} &nbsp; desired &nbsp;|&nbsp; {{deployment.status.updatedReplicas}} &nbsp; updated &nbsp;|&nbsp; {{deployment.status.replicas}} &nbsp; total &nbsp;|&nbsp; {{deployment.status.availableReplicas}} &nbsp; available</span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>StrategyType: &nbsp; </span>
+          <span>StrategyType:           </span>
           <span>{{deployment.spec.strategy.type}}</span>
-        </div>
+        </div><br>
         <div class="same-line">
-          <span>RollingUpdateStrategy: &nbsp; </span>
+          <span>RollingUpdateStrategy:  </span>
           <span *ngFor="let recipient of deployment.spec.strategy.rollingUpdate| keyvalue">
             {{ recipient.value }} &nbsp; {{ recipient.key }},&nbsp;
           </span>
-        </div>
+        </div><br>
       </mat-card-content>
       <mat-card-actions align="end"></mat-card-actions>
   </mat-card>
