@@ -14,6 +14,7 @@ export class DeploymentsComponent implements OnInit {
   deployment!: KbDeployment;
   displayedColumns: string[] = ['name', 'ready', 'upToDate', 'available', 'startTime', 'containers', 'images', 'selector'];
   dataSource!: MatTableDataSource<KbDeployment>;
+  testString: string = "This is a test String"
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

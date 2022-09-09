@@ -14,3 +14,13 @@
   table {
     width: 100%;
   }
+
+  .example-card {
+    margin-top: 20px;
+    max-height: 800px;
+    background-color: rgb(245, 245, 248);
+  }
+
+  .same-line {
+    display: inline;
+  }
