@@ -74,50 +74,101 @@
         <mat-card-subtitle></mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <div class="same-line">
-          <span>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span>{{deployment.metadata.name}}</span>
-        </div><br>
-        <div class="same-line">
-          <span>Namespace:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span>{{deployment.metadata.namespace}}</span>
-        </div><br>
-        <div class="same-line">
-          <span>CreationTimestamp:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span>{{deployment.metadata.creationTimestamp}}</span>
-        </div><br>
-        <div class="same-line">
-          <span>Labels:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span *ngFor="let recipient of deployment.metadata.labels| keyvalue">
-            {{ recipient.key }} = {{ recipient.value }},&nbsp;
-          </span>
-        </div><br>
-        <div class="same-line">
-          <span>Annotations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span *ngFor="let recipient of deployment.metadata.annotations| keyvalue">
-           {{recipient.key != 'kubectl.kubernetes.io/last-applied-configuration' ? (recipient.key+"="+recipient.value) : ""}},&nbsp;
-          </span>
-        </div><br>
-        <div class="same-line">
-          <span>Selector:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span *ngFor="let recipient of deployment.spec.selector.matchLabels| keyvalue">
-            {{ recipient.key }} = {{ recipient.value }},&nbsp;
-          </span>
-        </div><br>
-        <div class="same-line">
-          <span>Replicas:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span>{{deployment.spec.replicas}} &nbsp; desired &nbsp;|&nbsp; {{deployment.status.updatedReplicas}} &nbsp; updated &nbsp;|&nbsp; {{deployment.status.replicas}} &nbsp; total &nbsp;|&nbsp; {{deployment.status.availableReplicas}} &nbsp; available</span>
-        </div><br>
-        <div class="same-line">
-          <span>StrategyType:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span>{{deployment.spec.strategy.type}}</span>
-        </div><br>
-        <div class="same-line">
-          <span>RollingUpdateStrategy:&nbsp;&nbsp;</span>
-          <span *ngFor="let recipient of deployment.spec.strategy.rollingUpdate| keyvalue">
-            {{ recipient.value }} &nbsp; {{ recipient.key }},&nbsp;
-          </span>
-        </div><br>
+        <table>
+          <tr style="text-align:left">
+            <td>Name:</td>
+            <td>{{deployment.metadata.name}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>Namespace:</td>
+            <td>{{deployment.metadata.namespace}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>CreationTimestamp:</td>
+            <td>{{deployment.metadata.creationTimestamp}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>Labels:</td>
+            <td>
+              <span *ngFor="let recipient of deployment.metadata.labels| keyvalue">
+                {{ recipient.key }} = {{ recipient.value }},&nbsp;
+              </span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>Annotations:</td>
+            <td>
+              <span *ngFor="let recipient of deployment.metadata.annotations| keyvalue">
+                {{recipient.key != 'kubectl.kubernetes.io/last-applied-configuration' ? (recipient.key+"="+recipient.value) : ""}},&nbsp;
+              </span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>Selector:</td>
+            <td>
+              <span *ngFor="let recipient of deployment.spec.selector.matchLabels| keyvalue">
+                {{ recipient.key }} = {{ recipient.value }},&nbsp;
+              </span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>Replicas:</td>
+            <td>{{deployment.spec.replicas}} &nbsp; desired &nbsp;|&nbsp; {{deployment.status.updatedReplicas}} &nbsp; updated &nbsp;|&nbsp; {{deployment.status.replicas}} &nbsp; total &nbsp;|&nbsp; {{deployment.status.availableReplicas}} &nbsp; available</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>StrategyType:</td>
+            <td>{{deployment.spec.strategy.type}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="text-align:left">
+            <td>RollingUpdateStrategy:</td>
+            <td>
+              <span *ngFor="let recipient of deployment.spec.strategy.rollingUpdate| keyvalue">
+                {{ recipient.value }} &nbsp; {{ recipient.key }},&nbsp;
+              </span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <div>Pod Template:</div>
+        <p>Placeholder for Pod Template</p>
+        <div>Conditions:</div><br>
+        <table>
+          <tr style="text-align:left">
+            <th>Type</th>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Message</th>
+          </tr>
+          <tr style="text-align:left">
+            <th>--------</th>
+            <th>--------</th>
+            <th>--------</th>
+            <th>--------</th>
+          </tr>
+          <tr style="text-align:left" *ngFor="let condition of deployment.status.conditions">
+            <td>{{condition.type}}</td>
+            <td>{{condition.status}}</td>
+            <td>{{condition.reason}}</td>
+            <td>{{condition.message}}</td>
+          </tr>
+        </table>
       </mat-card-content>
       <mat-card-actions align="end"></mat-card-actions>
   </mat-card>
