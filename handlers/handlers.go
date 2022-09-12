@@ -56,8 +56,8 @@ func GetPodHandler(c *gin.Context) {
 }
 
 func GetPodLogsHandler(c *gin.Context) {
-	podName := c.Param("deploymentName")
-	ContainerName := c.Param("deploymentName")
+	podName := c.Param("podName")
+	ContainerName := c.Param("containerName")
 	c.JSON(http.StatusOK, pods.GetPodLogs(podName, ContainerName))
 }
 
