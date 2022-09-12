@@ -146,16 +146,14 @@
             <td></td>
           </tr>
         </table>
-        <div>Pod Template:</div>
-        <p>Placeholder for Pod Template</p>
         <ul class="pod-template">
           <li>Pod Template</li>
             <ul class="pod-template">
-               <span>Labels:</span>
+               <span>Labels:&nbsp</span>
                <span *ngFor="let label of deployment.spec.template.metadata.labels| keyvalue">
-                {{ label.key }} &nbsp; {{ label.value }},&nbsp;
+                {{ label.key }}={{ label.value }},&nbsp;
               </span><br>	
-               <span>Service Account:</span>
+               <span>Service Account:&nbsp</span>
                <span>{{deployment.spec.template.spec['serviceAccountName'] ? deployment.spec.template.spec.serviceAccountName : "default"}}</span><br>
                <li class="pod-template">Containers:
                     <ul class="pod-template" *ngFor="let container of deployment.spec.template.spec.containers">
@@ -175,19 +173,21 @@
                                 </td>
                               </tr>
                               <tr style="text-align:left">
-                                <td>Environment:</td>
+                                <td>Environment:&nbsp</td>
                                 <td>
                                   <span *ngFor="let envt of container.env">
                                       ({{envt.name}}={{envt.value}}),&nbsp;
                                   </span>
+                                  <span>{{container['env'] ? "" : "none"}}</span>
                                 </td>
                               </tr>
                               <tr style="text-align:left">
-                                <td>Mounts:</td>
+                                <td>Mounts:&nbsp</td>
                                 <td>
                                   <span *ngFor="let vm of container.volumeMounts">
                                       ({{vm.mountPath}}&nbsp;from&nbsp;{{vm.name}}),&nbsp;
                                   </span>
+                                  <span>{{container['volumeMounts'] ? "" : "none"}}</span>
                                 </td>
                               </tr>
                              </table>
@@ -217,12 +217,6 @@
                </li>
             </ul>
         </ul>
-
-
-
-
-
-        <p>Placeholder for Pod Template</p>
         <div>Conditions:</div><br>
         <table>
           <tr style="text-align:left">
