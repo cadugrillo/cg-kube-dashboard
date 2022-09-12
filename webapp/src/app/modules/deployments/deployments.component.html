@@ -136,7 +136,7 @@
             <td></td>
           </tr>
           <tr style="text-align:left">
-            <td>RollingUpdateStrategy:</td>
+            <td width="150px">RollingUpdateStrategy:</td>
             <td>
               <span *ngFor="let recipient of deployment.spec.strategy.rollingUpdate| keyvalue">
                 {{ recipient.value }} &nbsp; {{ recipient.key }},&nbsp;
@@ -147,13 +147,13 @@
           </tr>
         </table>
         <ul class="pod-template">
-          <li>Pod Template</li>
+          <li>Pod Template:</li>
             <ul class="pod-template">
-               <span>Labels:&nbsp</span>
+               <span>Labels:&nbsp;</span>
                <span *ngFor="let label of deployment.spec.template.metadata.labels| keyvalue">
                 {{ label.key }}={{ label.value }},&nbsp;
               </span><br>	
-               <span>Service Account:&nbsp</span>
+               <span>Service Account:&nbsp;</span>
                <span>{{deployment.spec.template.spec['serviceAccountName'] ? deployment.spec.template.spec.serviceAccountName : "default"}}</span><br>
                <li class="pod-template">Containers:
                     <ul class="pod-template" *ngFor="let container of deployment.spec.template.spec.containers">
@@ -173,7 +173,7 @@
                                 </td>
                               </tr>
                               <tr style="text-align:left">
-                                <td>Environment:&nbsp</td>
+                                <td width="100px">Environment:</td>
                                 <td>
                                   <span *ngFor="let envt of container.env">
                                       ({{envt.name}}={{envt.value}}),&nbsp;
@@ -182,7 +182,7 @@
                                 </td>
                               </tr>
                               <tr style="text-align:left">
-                                <td>Mounts:&nbsp</td>
+                                <td>Mounts:</td>
                                 <td>
                                   <span *ngFor="let vm of container.volumeMounts">
                                       ({{vm.mountPath}}&nbsp;from&nbsp;{{vm.name}}),&nbsp;
@@ -206,7 +206,7 @@
                                 </td>
                               </tr>
                               <tr style="text-align:left">
-                                <td>Name:</td>
+                                <td width="70px">Name:</td>
                                 <td>
                                   {{volume['name'] ? volume.name : "unknown"}}
                                 </td>

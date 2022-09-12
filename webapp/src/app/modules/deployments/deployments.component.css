@@ -15,17 +15,21 @@
     width: 100%;
   }
 
+  td {
+    text-align: left;
+  }
+
   .table-description {
-    width: 50%;
+    width: 100%;
   }
 
   .table-description-small {
-    width: 50%;
+    width: 100%;
   }
 
   .example-card {
     margin-top: 20px;
-    max-height: 800px;
+    max-height: 1600px;
     background-color: rgb(245, 245, 248);
   }
 
