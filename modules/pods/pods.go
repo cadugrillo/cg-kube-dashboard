@@ -62,9 +62,9 @@ func GetPodLogs(podName string, containerName string) string {
 
 	opts := v1.PodLogOptions{}
 	opts.Container = containerName
-	logs := clientset.CoreV1().Pods("deafult").GetLogs(podName, &opts)
+	logs := clientset.CoreV1().Pods("default").GetLogs(podName, &opts)
 
-	podLogs, err := logs.Stream(context.Background())
+	podLogs, err := logs.Stream(context.TODO())
 	if err != nil {
 		return err.Error()
 	}
