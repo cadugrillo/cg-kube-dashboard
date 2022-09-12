@@ -66,14 +66,14 @@ func GetPodLogs(podName string, containerName string) string {
 
 	podLogs, err := logs.Stream(context.TODO())
 	if err != nil {
-		return "error in opening stream"
+		return err.Error()
 	}
 	defer podLogs.Close()
 
 	buf := new(bytes.Buffer)
 	_, err = io.Copy(buf, podLogs)
 	if err != nil {
-		return "error in copy information from podLogs to buf"
+		return err.Error()
 	}
 	str := buf.String()
 
