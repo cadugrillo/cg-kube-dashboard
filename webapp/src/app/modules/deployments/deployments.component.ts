@@ -2,6 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DeploymentsService, KbDeployments,KbDeployment } from 'src/app/services/deployments.service';
+import { PodsService } from 'src/app/services/pods.service';
 
 @Component({
   selector: 'app-deployments',
@@ -46,5 +47,4 @@ export class DeploymentsComponent implements OnInit {
       console.log(data);
     });
   }
-
 }

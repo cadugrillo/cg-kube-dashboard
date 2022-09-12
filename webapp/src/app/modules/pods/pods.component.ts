@@ -33,4 +33,17 @@ export class PodsComponent implements OnInit {
     });
   }
 
+  getPod(PodName: string) {
+    this.PodsService.getPod(PodName).subscribe((data) => {
+      console.log(data);
+      this.pod = (data as KbPod);
+    });
+  }
+
+  getLogs(podName: string, containerName: string) {
+    this.PodsService.getPodLogs(podName, containerName).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
 }

@@ -12,6 +12,14 @@ export class PodsService {
   getPods() {
     return this.httpClient.get(environment.gateway + '/cg-kube-dashboard/pods/json');
   }
+
+  getPod(PodName: string) {
+    return this.httpClient.get(environment.gateway + '/cg-kube-dashboard/pods/' + PodName);
+  }
+
+  getPodLogs(PodName: string, ContainerName: string) {
+    return this.httpClient.get(environment.gateway + '/cg-kube-dashboard/pods/' + PodName + '/' + ContainerName);
+  }
 }
 
 export class KbPods {

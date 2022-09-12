@@ -50,6 +50,17 @@ func GetPodsHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, pods.GetPods())
 }
 
+func GetPodHandler(c *gin.Context) {
+	podName := c.Param("podName")
+	c.JSON(http.StatusOK, pods.GetPod(podName))
+}
+
+func GetPodLogsHandler(c *gin.Context) {
+	podName := c.Param("deploymentName")
+	ContainerName := c.Param("deploymentName")
+	c.JSON(http.StatusOK, pods.GetPodLogs(podName, ContainerName))
+}
+
 // ///////////SERVICES HANDLERS////////////////////
 func GetServicesHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, services.GetServices())
