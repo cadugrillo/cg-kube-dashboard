@@ -74,7 +74,7 @@
         <mat-card-subtitle></mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <table>
+        <table class="table-description">
           <tr style="text-align:left">
             <td>Name:</td>
             <td>{{deployment.metadata.name}}</td>
@@ -147,6 +147,81 @@
           </tr>
         </table>
         <div>Pod Template:</div>
+        <p>Placeholder for Pod Template</p>
+        <ul class="pod-template">
+          <li>Pod Template</li>
+            <ul class="pod-template">
+               <span>Labels:</span>
+               <span *ngFor="let label of deployment.spec.template.metadata.labels| keyvalue">
+                {{ label.key }} &nbsp; {{ label.value }},&nbsp;
+              </span><br>	
+               <span>Service Account:</span>
+               <span>{{deployment.spec.template.spec['serviceAccountName'] ? deployment.spec.template.spec.serviceAccountName : "default"}}</span><br>
+               <li class="pod-template">Containers:
+                    <ul class="pod-template" *ngFor="let container of deployment.spec.template.spec.containers">
+                        <li class="pod-template">{{container.name}}:</li>
+                          <ul class="pod-template">
+                             <table class="table-description-small">
+                              <tr style="text-align:left">
+                                <td>Image:</td>
+                                <td>{{container.image}}</td>
+                              </tr>
+                              <tr style="text-align:left">
+                                <td>Port:</td>
+                                <td>
+                                  <span *ngFor="let port of container.ports">
+                                      {{port.containerPort}}/{{port.protocol}},&nbsp;
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr style="text-align:left">
+                                <td>Environment:</td>
+                                <td>
+                                  <span *ngFor="let envt of container.env">
+                                      ({{envt.name}}={{envt.value}}),&nbsp;
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr style="text-align:left">
+                                <td>Mounts:</td>
+                                <td>
+                                  <span *ngFor="let vm of container.volumeMounts">
+                                      ({{vm.mountPath}}&nbsp;from&nbsp;{{vm.name}}),&nbsp;
+                                  </span>
+                                </td>
+                              </tr>
+                             </table>
+                           </ul>
+                     </ul>
+               </li>
+               <li class="pod-template">Volumes:
+                   <ul class="pod-template" *ngFor="let volume of deployment.spec.template.spec.volumes">
+                        <li class="pod-template">{{volume.name}}:</li>
+                          <ul class="pod-template">
+                             <table class="table-description-small">
+                              <tr style="text-align:left">
+                                <td>Type:</td>
+                                <td>
+                                  {{volume['configMap'] ? "ConfigMap (a volume populated by a ConfigMap)" : "unknown"}}
+                                </td>
+                              </tr>
+                              <tr style="text-align:left">
+                                <td>Name:</td>
+                                <td>
+                                  {{volume['name'] ? volume.name : "unknown"}}
+                                </td>
+                              </tr>
+                             </table>
+                           </ul>
+                    </ul>
+               </li>
+            </ul>
+        </ul>
+
+
+
+
+
         <p>Placeholder for Pod Template</p>
         <div>Conditions:</div><br>
         <table>

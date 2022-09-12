@@ -96,7 +96,26 @@ class TemplateSpec {
   restartPolicy!: string
   schedulerName!: string
   securityContext!: SecurityContext
+  serviceAccount!: string
+  serviceAccountName!: string
   terminationGracePeriodSeconds!: number
+  volumes!: Volume[]
+}
+
+class Volume {
+  configMap!: ConfigMap
+  name!: string
+}
+
+class ConfigMap {
+  defaultMode!: number
+  items!: ConfigMapItem[]
+  name!: string
+}
+
+class ConfigMapItem {
+  key!: string
+  path!: string
 }
 
 class SecurityContext {
@@ -112,6 +131,12 @@ class Container {
   resources!: Resource[]
   terminationMessagePath!: string
   terminationMessagePolicy!: string
+  volumeMounts!: VolumeMount[]
+}
+
+class VolumeMount {
+  mountPath!: string
+  name!: string
 }
 
 class Env {
