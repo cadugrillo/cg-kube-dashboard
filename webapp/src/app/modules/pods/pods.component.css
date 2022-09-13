@@ -39,7 +39,7 @@
 
   .inner-card-text {
     max-height: 100%;
-    overflow: auto;
+    overflow-y: scroll;
   }
 
   .same-line {
