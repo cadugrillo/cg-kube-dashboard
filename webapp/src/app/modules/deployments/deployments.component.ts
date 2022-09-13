@@ -28,7 +28,7 @@ export class DeploymentsComponent implements OnInit {
 
   getDeployments() {
     this.DeploymentsService.getDeployments().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.deployments = (data as KbDeployments);
       this.dataSource = new MatTableDataSource(this.deployments.items);
       this.dataSource.paginator = this.paginator;
@@ -37,7 +37,7 @@ export class DeploymentsComponent implements OnInit {
 
   getDeployment(DeploymentName: string) {
     this.DeploymentsService.getDeployment(DeploymentName).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.deployment = (data as KbDeployment);
     });
   }

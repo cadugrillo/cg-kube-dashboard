@@ -27,7 +27,7 @@ export class PodsComponent implements OnInit {
 
   getPods() {
     this.PodsService.getPods().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.pods = (data as KbPods);
       this.dataSource = new MatTableDataSource(this.pods.items);
       this.dataSource.paginator = this.paginator;
@@ -44,7 +44,7 @@ export class PodsComponent implements OnInit {
 
   getLogs(podName: string, containerName: string) {
     this.PodsService.getPodLogs(podName, containerName).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.logs = (data as string);
     });
   }
