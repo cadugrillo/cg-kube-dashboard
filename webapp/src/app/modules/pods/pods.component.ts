@@ -12,6 +12,7 @@ export class PodsComponent implements OnInit {
 
   pods!: KbPods;
   pod!: KbPod;
+  logs!: string
   displayedColumns: string[] = ['name', 'status', 'restarts', 'ip', 'node', 'startTime', 'namespace']
   dataSource!: MatTableDataSource<KbPod>;
 
@@ -43,7 +44,7 @@ export class PodsComponent implements OnInit {
   getLogs(podName: string, containerName: string) {
     this.PodsService.getPodLogs(podName, containerName).subscribe((data) => {
       console.log(data);
+      this.logs = (data as string);
     });
   }
-
 }
