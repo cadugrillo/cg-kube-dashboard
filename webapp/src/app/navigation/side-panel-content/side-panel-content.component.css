@@ -1,13 +1,9 @@
 .app-toolbar {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 64px; /* Sets the sticky toolbar to be on top */
-    z-index: 999; /* Ensure that your app's content doesn't overlap the toolbar */
+    position: fixed;
+    margin-top: 64px;
 }
 
 .selection {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 128px; /* Sets the sticky toolbar to be on top */
-    z-index: 998; /* Ensure that your app's content doesn't overlap the toolbar */
+    position: fixed;
+    margin-top: 128px;
 }

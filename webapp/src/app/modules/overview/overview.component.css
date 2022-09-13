@@ -1,6 +1,47 @@
 .app-toolbar {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 64px; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  position: fixed;
+  z-index: 1000;
+  margin-top: 64px;
+  }
+
+  p {
+    margin-top: 148px;
+  }
+
+  .table-wrapper {
+    margin-top: 148px;
+    margin-left: 20px;
+    width: 95%;
+   }
+
+   .tab-group {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 95%;
+   }
+
+  table {
+    width: 100%;
+  }
+
+  .table-description {
+    width: 100%;
+  }
+
+  .table-description-small {
+    width: 100%;
+  }
+
+  .example-card {
+    margin-top: 20px;
+    max-height: 1600px;
+    background-color: rgb(245, 245, 248);
+  }
+
+  .same-line {
+    display: inline;
+  }
+
+  .pod-template {
+    list-style-type: none;
   }
