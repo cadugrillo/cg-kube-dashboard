@@ -31,16 +31,14 @@
 
   .inner-card {
     margin-top: 20px;
-    height: 90% !important;
+    max-height: 600px;
     width: 95%;
-    position: relative;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
   }
 
   .inner-card-text {
     max-height: 100%;
-    position: absolute;
     overflow: auto
   }
 
