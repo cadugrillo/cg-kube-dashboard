@@ -27,21 +27,19 @@
     margin-top: 20px;
     max-height: 1600px;
     background-color: rgb(245, 245, 248);
+    overflow: hidden;
   }
 
   .inner-card {
     margin-top: 20px;
     max-height: 600px;
-    width: 95%;
-    position: relative;
-    overflow: hidden;
+    width: 98%;
     background-color: rgb(255, 255, 255);
+    overflow: auto;
   }
 
   .inner-card-text {
     max-height: 100%;
-    position: absolute;
-    overflow: scroll;
   }
 
   .same-line {
